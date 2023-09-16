@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/a1";
+import { AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
 import{Link} from 'react-router-dom'
 
 const LoginForm = ()=> {
