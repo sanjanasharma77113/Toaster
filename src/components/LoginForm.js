@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible} from "react-icons/ai";
-import{Link} from 'react-router-dom'
-
-const LoginForm = ()=> {
- 
+import{Link, useNavigate} from 'react-router-dom'
+import { toast} from 'react-hot-toast'
+const LoginForm = ({setIsLoggedIn})=> {
+  
+  
+  const navigate = useNavigate();
     const [formData,setFormData] = useState({
         email:"", password:""
     })
@@ -18,8 +20,18 @@ const LoginForm = ()=> {
         }  
         ))
     }
-  return (
-    <form>
+
+
+    function submitHandler(event)
+ {
+  event.preventDefault();
+  setIsLoggedIn(true);
+  toast.success("Logged In");
+  navigate("/dashboard")
+
+
+ }  return (
+    <form onSubmit={submitHandler}>
         <label>
             <p>
                 Email Address <sup>*</sup>
@@ -29,7 +41,7 @@ const LoginForm = ()=> {
             type={showPassword? ("text"):("password")}
             value ={formData.emaiil}
             onChange={changeHandler}
-            placeholder="Enter email password"
+            placeholder="Enter email address"
             />
             </label>
 
@@ -42,14 +54,31 @@ const LoginForm = ()=> {
             type="text"
             value ={formData.emaiil}
             onChange={changeHandler}
-            placeholder="Enter email id"
-            name="email"
+            placeholder="Enter password"
+            name="password"
             />
 
             <span onClick={() => setShowPassword ((prev)=> !prev)}>
               {showPassword ? (<AiOutlineEyeInvisible/>) : (<AiOutlineEye/>)};  
             </span>
-            </label>
+
+          <Link to ="#">
+            <p>
+              Forgot password
+            </p>
+          </Link>
+          </label>
+
+          <button>
+            Sign In
+          </button>
+            
+            
+            
+            
+            
+            
+           
     </form>
   )
 }

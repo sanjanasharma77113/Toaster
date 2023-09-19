@@ -15,8 +15,8 @@ const Template=({title, desc1,desc2,image,formtype,setIsLoggedIn}) =>{
             </p>
            
             {formtype === "signup" ?
-        (<SignupForm/>):
-        (<LoginForm/>)}
+        (<SignupForm setIsLoggedIn={setIsLoggedIn}/>):
+        (<LoginForm setIsLoggedIn/>)}
         
       <div>
         <div></div>
