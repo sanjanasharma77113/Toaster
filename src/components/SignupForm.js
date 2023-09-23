@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 
-
-
-
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import {BsEyeFill }  from "react-icons/bs"
-  
+import { BsEyeFill } from "react-icons/bs";
+
 const SignupForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    lastname: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -23,7 +20,6 @@ const SignupForm = () => {
       [name]: value,
     }));
   }
-  
 
   return (
     <div>
@@ -87,11 +83,11 @@ const SignupForm = () => {
             </p>
             <input
               required
-              type={showPassword?"text": "password"}
+              type="password"
               name="password"
               onChange={changeHandler}
-              placeholder="Enter create password"
-              value={formData.password}
+              placeholder="Enter password 2"
+              value={formData.firstName}
             />
             <span onClick={() => setShowPassword((prev) => !prev)}>
               {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
@@ -99,15 +95,15 @@ const SignupForm = () => {
           </label>
           <label>
             <p>
-              Confirm Pssword <sup>*</sup>
+              Confirm Password <sup>*</sup>
             </p>
             <input
               required
-              type="text"
+              type={showPassword ? "text" : "password"}
               name="confirmPassword"
               onChange={changeHandler}
               placeholder="Confirm Password"
-              value={formData.confirmPassword}
+              value={formData.password}
             />
 
             <span onClick={() => setShowPassword((prev) => !prev)}>

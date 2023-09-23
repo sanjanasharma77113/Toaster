@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard";
 
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home";
  
 
@@ -14,6 +14,9 @@ import Home from "./pages/Home";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+
   return (
     <div>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
@@ -21,8 +24,8 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/login" element={<Login  setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/signup" element={<Signup />} />
 
         <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
